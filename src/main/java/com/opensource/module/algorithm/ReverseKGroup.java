@@ -8,7 +8,7 @@ package com.opensource.module.algorithm;
  * @Version V1.0
  */
 public class ReverseKGroup {
-    public static ListNode reverseKGroup(ListNode head, int k) {
+    public static ListNode solution(ListNode head, int k) {
 
         ListNode dummy = new ListNode(0);
         System.out.println(dummy);
@@ -62,6 +62,6 @@ public class ReverseKGroup {
 //        list.next.next.next.next.next = new ListNode(6);
 //        list.next.next.next.next.next.next = new ListNode(7);
 //        list.next.next.next.next.next.next.next = new ListNode(8);
-//        ListNode listNode = ReverseKGroup.reverseKGroup(list, 3);
+//        ListNode listNode = ReverseKGroup.solution(list, 3);
     }
 }
