@@ -1,8 +1,6 @@
 package com.opensource.module;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * @Title: ""
@@ -47,7 +45,30 @@ public class MyTest {
     }
 
     public static void main(String[] args) {
-        MyTest myTest = new MyTest();
-        myTest.getPermutation(3,1);
+        Scanner in = new Scanner(System.in);
+        // 注意 hasNext 和 hasNextLine 的区别
+        Map<Character,Integer> map = new HashMap<>(){{
+           put('A',10);
+            put('B',11);
+            put('C',12);
+            put('D',13);
+            put('E',14);
+            put('F',15);
+        }};
+
+            while (in.hasNext()) { // 注意 while 处理多个 case
+                String a = in.next();
+                a = a.replace("0x","");
+                int num = 0;
+                for (int i = 0; i < a.length(); ++i) {
+                    char  ch = a.charAt(a.length() - i -1);
+                    if(ch >= '0' && ch <='9'){
+                        num += (ch-'0') * Math.pow(16,i);
+                    }else{
+                        num += map.get(ch) * Math.pow(16,i);
+                    }
+                }
+                System.out.println(num);
+            }
     }
 }
