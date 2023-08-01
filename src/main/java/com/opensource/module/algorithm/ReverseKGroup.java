@@ -54,14 +54,14 @@ public class ReverseKGroup {
 
 
     public static void main(String[] args) {
-//        ListNode list = new ListNode(1);
-//        list.next = new ListNode(2);
-//        list.next.next = new ListNode(3);
-//        list.next.next.next = new ListNode(4);
-//        list.next.next.next.next = new ListNode(5);
-//        list.next.next.next.next.next = new ListNode(6);
-//        list.next.next.next.next.next.next = new ListNode(7);
-//        list.next.next.next.next.next.next.next = new ListNode(8);
-//        ListNode listNode = ReverseKGroup.solution(list, 3);
+        ListNode list = new ListNode(1);
+        list.next = new ListNode(2);
+        list.next.next = new ListNode(3);
+        list.next.next.next = new ListNode(4);
+        list.next.next.next.next = new ListNode(5);
+        list.next.next.next.next.next = new ListNode(6);
+        list.next.next.next.next.next.next = new ListNode(7);
+        list.next.next.next.next.next.next.next = new ListNode(8);
+        ListNode listNode = ReverseKGroup.solution(list, 3);
     }
 }

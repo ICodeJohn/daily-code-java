@@ -20,10 +20,10 @@ public class SurroundedArea {
         int row = scanner1.nextInt();
         int col = scanner1.nextInt();
         Scanner scanner2 = new Scanner(System.in);
-        String line = scanner2.nextLine();
+        scanner2.nextLine();
         Character[][] matrix = new Character[row][col];
         for (int i = 0; i < row; i++) {
-            String[] str = line.split(" ");
+            String[] str = scanner2.nextLine().split(" ");
             for (int j = 0; j < col; j++) {
                 matrix[i][j] = str[i].charAt(j);
             }
@@ -33,10 +33,10 @@ public class SurroundedArea {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
                 if (matrix[i][j] == 'O' && (i == 0 || j == 0 || i == row - 1 || j == col - 1)) {
-                    int calculate = calculate(copy(matrix,row,col), i, j, true);
-                    if(calculate > 0){
-                        zones.put(i+ " "+ j,calculate);
-                        maxArea = Math.max(calculate,maxArea);
+                    int calculate = calculate(copy(matrix, row, col), i, j, true);
+                    if (calculate > 0) {
+                        zones.put(i + " " + j, calculate);
+                        maxArea = Math.max(calculate, maxArea);
                     }
                 }
             }
@@ -44,16 +44,16 @@ public class SurroundedArea {
 
         String entrace = "";
         for (Map.Entry<String, Integer> entry : zones.entrySet()) {
-            if(maxArea == entry.getValue() && entrace.isBlank() ){
+            if (maxArea == entry.getValue() && entrace.isBlank()) {
                 entrace = entry.getKey() + " " + entry.getValue();
-            }else if(maxArea == entry.getValue() && !entrace.isBlank()){
+            } else if (maxArea == entry.getValue() && !entrace.isBlank()) {
                 entrace = entry.getValue().toString();
                 break;
             }
         }
-        if(entrace.isBlank()){
-            System.out.println("NUL");
-        }else {
+        if (entrace.isBlank()) {
+            System.out.println("NULL");
+        } else {
             System.out.println(entrace);
         }
 
@@ -75,16 +75,16 @@ public class SurroundedArea {
         }
         matrix[i][j] = 'X';
         int count = 1;
-        int[][] directions = new int[][]{{1,0},{-1,0},{0,1},{0,-1}};
+        int[][] directions = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
         for (int r = 0; r < directions.length; r++) {
-            int newX = i +directions[r][0];
-            int newY = j +directions[r][1];
-            if(newX >= 0 && newX < matrix.length && newY >= 0 && newY< matrix[0].length && matrix[newX][newY] =='O'){
+            int newX = i + directions[r][0];
+            int newY = j + directions[r][1];
+            if (newX >= 0 && newX < matrix.length && newY >= 0 && newY < matrix[0].length && matrix[newX][newY] == 'O') {
                 int calc = calculate(matrix, newX, newY, false);
-                if(calc == 0){
+                if (calc == 0) {
                     return 0;
                 }
-                count +=calc;
+                count += calc;
             }
         }
         return count;
