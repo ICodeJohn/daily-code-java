@@ -1,9 +1,6 @@
 package com.opensource.module.algorithm;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * @Title: ''
@@ -42,16 +39,16 @@ public class SurroundedArea {
             }
         }
 
-        String entrace = "";
+        String entrace = null;
         for (Map.Entry<String, Integer> entry : zones.entrySet()) {
-            if (maxArea == entry.getValue() && entrace.isBlank()) {
+            if (maxArea == entry.getValue() && Objects.isNull(entrace)) {
                 entrace = entry.getKey() + " " + entry.getValue();
-            } else if (maxArea == entry.getValue() && !entrace.isBlank()) {
+            } else if (maxArea == entry.getValue() && Objects.nonNull(entrace)) {
                 entrace = entry.getValue().toString();
                 break;
             }
         }
-        if (entrace.isBlank()) {
+        if (Objects.isNull(entrace)) {
             System.out.println("NULL");
         } else {
             System.out.println(entrace);

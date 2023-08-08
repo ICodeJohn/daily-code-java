@@ -19,7 +19,7 @@ public class LetterCombinations {
         if (nums.length() == 0) {
             return result;
         }
-        Map<Character, String> map = new HashMap<>() {{
+        Map<Character, String> map = new HashMap() {{
             put('2', "abc");
             put('3', "def");
             put('4', "ghi");
