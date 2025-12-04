@@ -2,7 +2,7 @@ package com.opensource.module.huawei.od;
 
 import java.util.*;
 
-public class CircuitError {
+public class CircuitError_012_A {
 
 
     public static void main(String[] args) {

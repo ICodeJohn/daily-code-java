@@ -2,7 +2,7 @@ package com.opensource.module.huawei.od;
 
 import java.util.*;
 
-public class CutInline {
+public class CutInline_008 {
     // 定义客户类
     static class Customer {
         int id;
@@ -25,14 +25,11 @@ public class CutInline {
         int timestamp = 0;
 
         // 优先队列：优先级升序？1 最高，数字越小优先级越高
-        PriorityQueue<Customer> pq = new PriorityQueue<>(new Comparator<Customer>() {
-            @Override
-            public int compare(Customer o1, Customer o2) {
-                if (o1.priority != o2.priority) {
-                    return o1.priority - o2.priority; // 优先级小的排前面（1 最高）
-                } else {
-                    return o1.time - o2.time; // 时间小的先来
-                }
+        PriorityQueue<Customer> pq = new PriorityQueue<>((o1, o2) -> {
+            if (o1.priority != o2.priority) {
+                return o1.priority - o2.priority; // 优先级小的排前面（1 最高）
+            } else {
+                return o1.time - o2.time; // 时间小的先来
             }
         });
 

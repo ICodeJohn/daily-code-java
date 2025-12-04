@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.TreeSet;
 
-public class ApplyVLan {
+public class ApplyVLan_003 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String vlans = sc.nextLine().trim();

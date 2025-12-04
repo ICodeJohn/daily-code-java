@@ -2,7 +2,7 @@ package com.opensource.module.huawei.od;
 
 import java.util.*;
 
-public class LargestO {
+public class LargestO_009 {
     static int m, n;
     static char[][] grid;
     static boolean[][] visited;
@@ -114,6 +114,8 @@ public class LargestO {
 
         return new Region(size, entries);
     }
+
+
 
     // 判断是否是边界
     static boolean isBoundary(int x, int y) {

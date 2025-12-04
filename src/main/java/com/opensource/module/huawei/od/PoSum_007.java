@@ -2,7 +2,7 @@ package com.opensource.module.huawei.od;
 
 import java.util.*;
 
-public class PoSum {
+public class PoSum_007 {
 
     static class PO {
         int id;

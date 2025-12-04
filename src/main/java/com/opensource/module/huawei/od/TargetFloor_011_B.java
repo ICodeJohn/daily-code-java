@@ -1,8 +1,9 @@
 package com.opensource.module.huawei.od;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Scanner;
 
-public class TargetFloor {
+public class TargetFloor_011_B {
 
 
     static int target;

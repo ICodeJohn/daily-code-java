@@ -2,7 +2,7 @@ package com.opensource.module.huawei.od;
 
 import java.util.Scanner;
 
-public class FindTeam {
+public class FindTeam_004 {
 
     static int[] parent;
 

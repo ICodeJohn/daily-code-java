@@ -2,7 +2,7 @@ package com.opensource.module.huawei.od;
 
 import java.util.*;
 
-public class LampCompare {
+public class LampCompare_001 {
 
     public static class Lamp {
         int idx, x1, x2, y1, y2;

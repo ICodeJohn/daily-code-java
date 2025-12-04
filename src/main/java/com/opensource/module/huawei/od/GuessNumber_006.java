@@ -2,44 +2,49 @@ package com.opensource.module.huawei.od;
 
 import java.util.*;
 
-public class GuessNumber {
+public class
 
-    // 计算 XAYB：A = 数字且位置正确，B = 数字正确但位置不对
+GuessNumber_006 {
+
     public static int[] calcAB(String guess, String answer) {
         int A = 0;
         int B = 0;
 
-        boolean[] usedA = new boolean[4];
-        boolean[] usedG = new boolean[4];
+        boolean[] usedGuess = new boolean[4];
+        boolean[] usedAnswer = new boolean[4];
 
-        // 1. 先算 A
+        // 先计算 A
         for (int i = 0; i < 4; i++) {
             if (guess.charAt(i) == answer.charAt(i)) {
                 A++;
-                usedA[i] = true;
-                usedG[i] = true;
+                usedGuess[i] = true;
+                usedAnswer[i] = true;
             }
         }
 
-        // 2. 再算 B（不能重复计数）
+        // 再计算 B
         for (int i = 0; i < 4; i++) {
-            if (usedG[i]) continue;  // 已是 A 的跳过
+            if (usedGuess[i]) continue;   // 已用于 A 的不再用于 B
 
             for (int j = 0; j < 4; j++) {
-                if (usedA[j]) continue;  // 已经被匹配过
+                if (usedAnswer[j]) continue;
 
                 if (guess.charAt(i) == answer.charAt(j)) {
                     B++;
-                    usedA[j] = true;
+                    usedGuess[i] = true;
+                    usedAnswer[j] = true;
                     break;
                 }
             }
         }
+
         return new int[]{A, B};
     }
 
 
+
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
 
