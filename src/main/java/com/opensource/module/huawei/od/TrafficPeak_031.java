@@ -2,7 +2,7 @@ package com.opensource.module.huawei.od;
 
 import java.util.*;
 
-public class TrafficPeak {
+public class TrafficPeak_031 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -11,6 +11,10 @@ public class TrafficPeak {
         int[] nums = new int[n];
         for (int i = 0; i < n; i++) {
             nums[i] = Integer.parseInt(parts[i]);
+        }
+        if(nums.length < 3){
+            System.out.println("-1");
+            return;
         }
 
         int[] left = new int[n];  // 左边第一个比它小的索引

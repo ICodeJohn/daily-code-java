@@ -2,7 +2,7 @@ package com.opensource.module.huawei.od;
 
 import java.util.*;
 
-public class WanderingEarth {
+public class WanderingEarth_028 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -18,7 +18,7 @@ public class WanderingEarth {
         }
 
         // 按时间排序
-        manualStarts.sort((a, b) -> Integer.compare(a[0], b[0]));
+        manualStarts.sort(Comparator.comparingInt(a -> a[0]));
 
         int[] startTime = new int[N];
         Arrays.fill(startTime, -1);

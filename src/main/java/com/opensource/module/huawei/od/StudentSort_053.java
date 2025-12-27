@@ -2,7 +2,7 @@ package com.opensource.module.huawei.od;
 
 import java.util.*;
 
-public class StudentSort {
+public class StudentSort_053 {
 
     public static class Student {
         String name;

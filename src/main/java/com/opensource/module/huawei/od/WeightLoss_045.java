@@ -2,7 +2,7 @@ package com.opensource.module.huawei.od;
 
 import java.util.Scanner;
 
-public class WeightLoss {
+public class WeightLoss_045 {
 
     static int n, t, k;
     static int[] calories;

@@ -67,6 +67,7 @@ public class PlayerRange {
 
             // 排序
             Collections.sort(players, new PlayerComparator());
+            players.sort(new PlayerComparator());
 
             // 输出前3名
             StringBuilder result = new StringBuilder();

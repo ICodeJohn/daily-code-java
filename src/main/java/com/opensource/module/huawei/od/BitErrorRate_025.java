@@ -2,7 +2,7 @@ package com.opensource.module.huawei.od;
 
 import java.util.*;
 
-public class BitErrorRate {
+public class BitErrorRate_025 {
 
     // 解析压缩字符串，返回 (count, char) 列表
     private static List<Pair> parse(String s) {
@@ -43,7 +43,6 @@ public class BitErrorRate {
 
             if (ca == 0) ca = a.get(i).count;
             if (cb == 0) cb = b.get(j).count;
-
             long take = Math.min(ca, cb);
 
             // 总长度增加

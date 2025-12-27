@@ -2,7 +2,7 @@ package com.opensource.module.huawei.od;
 
 import java.util.*;
 
-public class Square {
+public class Square_021 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -32,6 +32,7 @@ public class Square {
                     count++;
                 }
 
+
                 // 第二种旋转方向
                 x3 = x1 + dy; y3 = y1 - dx;
                 x4 = x2 + dy; y4 = y2 - dx;
@@ -41,6 +42,6 @@ public class Square {
             }
         }
 
-        System.out.println(count / 8);
+        System.out.println(count / 4);
     }
 }

@@ -5,6 +5,7 @@ import java.util.*;
 public class APISuccessRate_010 {
 
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
         int minAvg = sc.nextInt();  // 允许的平均失败率
         sc.nextLine();

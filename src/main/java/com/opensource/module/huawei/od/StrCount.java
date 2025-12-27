@@ -5,59 +5,75 @@ import java.util.Scanner;
 public class StrCount {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String str = sc.nextLine();
+        String input = sc.nextLine();
         int k = sc.nextInt();
+        int n = input.length();
 
-        int n = str.length();
-        int[] digitCount = new int[10];
-        int letterCount = 0;
-        int totalDigits = 0; // 不同数字的个数
+        // 不满足最小长度要求
+        if (n < 10 + k) {
+            System.out.println(0);
+            return;
+        }
 
-        long ans = 0;
+        int res = 0;                // 结果统计
+        int[] digitCount = new int[10];  // 数字出现次数
+        int numberCount = 0;        // 当前窗口中数字种类数
+        int countChar = 0;          // 当前窗口中英文字母数量
+        int left = 0;
 
-        // 双指针
-        int right = 0;
-        for (int left = 0; left < n; left++) {
-            // 移动右指针直到字母数 = k 且数字全，或者到末尾
-            while (right < n && (letterCount < k || totalDigits < 10)) {
-                char c = str.charAt(right);
-                if (Character.isLetter(c)) {
-                    letterCount++;
-                } else {
-                    int d = c - '0';
-                    digitCount[d]++;
-                    if (digitCount[d] == 1) {
-                        totalDigits++;
+        for (int right = 0; right < n; right++) {
+            char c = input.charAt(right);
+            if (Character.isLetter(c)) {
+                countChar++;        // 字母计数+1
+            }
+            if (Character.isDigit(c)) {
+                int d = c - '0';
+                digitCount[d]++;
+                if (digitCount[d] == 1) {
+                    numberCount++;  // 新增数字种类
+                }
+            }
+
+            // 超过k个字母时，移动左指针缩小窗口
+            while (left <= right && countChar > k) {
+                char leftChar = input.charAt(left);
+                if (Character.isLetter(leftChar)) {
+                    countChar--;
+                }
+                if (Character.isDigit(leftChar)) {
+                    int d = leftChar - '0';
+                    digitCount[d]--;
+                    if (digitCount[d] == 0) {
+                        numberCount--; // 减少数字种类
                     }
                 }
-                right++;
+                left++;
             }
 
-            // 如果满足条件
-            if (letterCount == k && totalDigits == 10) {
-                // 计算能延伸的长度（只加数字）
-                int extend = 0;
-                int temp = right;
-                while (temp < n && Character.isDigit(str.charAt(temp))) {
-                    extend++;
-                    temp++;
-                }
-                ans += extend + 1;
-            }
-
-            // 移动左指针前，更新计数
-            char leftChar = str.charAt(left);
-            if (Character.isLetter(leftChar)) {
-                letterCount--;
-            } else {
-                int d = leftChar - '0';
-                digitCount[d]--;
-                if (digitCount[d] == 0) {
-                    totalDigits--;
+            // 当数字种类达到10，字母数正好为k时，尝试移动左指针寻找更多合法子串
+            if (numberCount == 10 && countChar == k) {
+                // 复制计数数据，模拟移动左指针
+                int[] tempCount = digitCount.clone();
+                int tempNumberCount = numberCount;
+                int tempCountChar = countChar;
+                int tmpLeft = left;
+                while (tmpLeft <= right && tempNumberCount == 10 && tempCountChar == k) {
+                    res++;
+                    char ch = input.charAt(tmpLeft);
+                    if (Character.isLetter(ch)) {
+                        tempCountChar--;
+                    }
+                    if (Character.isDigit(ch)) {
+                        int d = ch - '0';
+                        tempCount[d]--;
+                        if (tempCount[d] == 0) {
+                            tempNumberCount--;
+                        }
+                    }
+                    tmpLeft++;
                 }
             }
         }
-
-        System.out.println(ans);
+        System.out.println(res);
     }
 }

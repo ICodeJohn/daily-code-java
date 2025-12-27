@@ -2,7 +2,7 @@ package com.opensource.module.huawei.od;
 
 import java.util.*;
 
-public class NucleicAcidTesting {
+public class NucleicAcidTesting_027 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

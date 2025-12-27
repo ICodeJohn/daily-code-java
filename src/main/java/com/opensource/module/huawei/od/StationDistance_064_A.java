@@ -2,7 +2,7 @@ package com.opensource.module.huawei.od;
 
 import java.util.Scanner;
 
-public class StationDistance {
+public class StationDistance_064_A {
 
     private static int minDistance = Integer.MAX_VALUE;
 

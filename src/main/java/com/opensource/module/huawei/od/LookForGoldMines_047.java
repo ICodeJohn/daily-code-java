@@ -2,7 +2,7 @@ package com.opensource.module.huawei.od;
 
 import java.util.*;
 
-public class LookForGoldMines {
+public class LookForGoldMines_047 {
     static int n, m;
     static char[][] grid;
     static boolean[][] visited;

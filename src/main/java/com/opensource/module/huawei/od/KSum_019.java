@@ -2,7 +2,7 @@ package com.opensource.module.huawei.od;
 
 import java.util.*;
 
-public class KSum {
+public class KSum_019 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

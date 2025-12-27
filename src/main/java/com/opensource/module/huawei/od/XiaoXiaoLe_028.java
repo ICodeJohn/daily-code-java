@@ -2,7 +2,7 @@ package com.opensource.module.huawei.od;
 
 import java.util.*;
 
-public class XiaoXiaoLe {
+public class XiaoXiaoLe_028 {
 
     static int N, M;
     static int[][] matrix;

@@ -43,7 +43,7 @@ public class IntervalIntersection {
             if (next[0] <= current[1]) { // 重叠或相邻
                 current[1] = Math.max(current[1], next[1]);
             } else {
-                merged.add(current);
+                merged.add(new int[]{current[0], current[1]});
                 current = next;
             }
         }

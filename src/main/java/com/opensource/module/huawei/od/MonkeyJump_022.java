@@ -3,7 +3,7 @@ package com.opensource.module.huawei.od;
 
 import java.util.Scanner;
 
-public class MonkeyJump {
+public class MonkeyJump_022 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();

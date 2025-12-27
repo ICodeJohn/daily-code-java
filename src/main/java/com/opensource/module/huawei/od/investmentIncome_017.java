@@ -2,7 +2,7 @@ package com.opensource.module.huawei.od;
 
 import java.util.*;
 
-public class investmentIncome {
+public class investmentIncome_017 {
     static class Product {
         int e; // 收益率 %
         int r; // 风险等级

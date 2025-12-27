@@ -2,7 +2,7 @@ package com.opensource.module.huawei.od;
 
 import java.util.*;
 
-public class ExpressionEvaluation {
+public class ExpressionEvaluation_018 {
 
     // 分数类
     static class Fraction {
@@ -62,7 +62,7 @@ public class ExpressionEvaluation {
             if (Character.isDigit(c)) {
                 number.append(c);
             } else {
-                if (number.length() > 0) {
+                if (!number.isEmpty()) {
                     output.add(number.toString());
                     number.setLength(0);
                 }
@@ -81,7 +81,7 @@ public class ExpressionEvaluation {
             }
         }
 
-        if (number.length() > 0) output.add(number.toString());
+        if (!number.isEmpty()) output.add(number.toString());
 
         while (!ops.isEmpty()) output.add(String.valueOf(ops.pop()));
 

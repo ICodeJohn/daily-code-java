@@ -2,7 +2,7 @@ package com.opensource.module.huawei.od;
 
 import java.util.Arrays;
 
-public class ClosestNumber {
+public class ClosestNumber_026 {
 
     public static void main(String[] args) {
         // 示例输入 [50,50,2,3],2

@@ -5,6 +5,7 @@ import java.util.*;
 public class JumpHouse {
 
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
 
         // 读取数组

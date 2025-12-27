@@ -4,20 +4,30 @@ import java.util.*;
 
 public class CodeBook {
     static int N, M;
-    static int[] plaintext;
+    static int[] data;
     static int[][] book;
-    static List<int[]> bestPath = null;
-    static final int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}}; // 右、下、左、上 顺序
+    static boolean[][] visited;
+
+    // 按坐标字典序：先行小，再列小
+    // 上、左、右、下
+    static final int[][] DIRS = {
+            {-1, 0},
+            {0, -1},
+            {0, 1},
+            {1, 0}
+    };
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
+        // 明文长度
         N = sc.nextInt();
-        plaintext = new int[N];
+        data = new int[N];
         for (int i = 0; i < N; i++) {
-            plaintext[i] = sc.nextInt();
+            data[i] = sc.nextInt();
         }
 
+        // 密码本尺寸
         M = sc.nextInt();
         book = new int[M][M];
         for (int i = 0; i < M; i++) {
@@ -26,16 +36,33 @@ public class CodeBook {
             }
         }
 
-        // 搜索
+        // ===== 频次剪枝 =====
+        int[] need = new int[10];
+        int[] have = new int[10];
+        for (int d : data) need[d]++;
+        for (int i = 0; i < M; i++)
+            for (int j = 0; j < M; j++)
+                have[book[i][j]]++;
+
+        for (int d = 0; d <= 9; d++) {
+            if (need[d] > have[d]) {
+                System.out.println("error");
+                return;
+            }
+        }
+
+        // ===== 枚举起点（按字典序） =====
         for (int i = 0; i < M; i++) {
             for (int j = 0; j < M; j++) {
-                if (book[i][j] == plaintext[0]) {
-                    boolean[][] visited = new boolean[M][M];
+                if (book[i][j] == data[0]) {
+                    visited = new boolean[M][M];
                     List<int[]> path = new ArrayList<>();
-                    path.add(new int[]{i, j});
+
                     visited[i][j] = true;
-                    if (dfs(1, i, j, visited, path)) {
-                        outputResult(bestPath);
+                    path.add(new int[]{i, j});
+
+                    if (dfs(1, i, j, path)) {
+                        print(path);
                         return;
                     }
                 }
@@ -45,29 +72,35 @@ public class CodeBook {
         System.out.println("error");
     }
 
-    static boolean dfs(int index, int x, int y, boolean[][] visited, List<int[]> path) {
+    // DFS 匹配 data[index]
+    static boolean dfs(int index, int x, int y, List<int[]> path) {
         if (index == N) {
-            bestPath = new ArrayList<>(path);
             return true;
         }
 
-        for (int[] dir : dirs) {
-            int nx = x + dir[0];
-            int ny = y + dir[1];
-            if (nx >= 0 && nx < M && ny >= 0 && ny < M && !visited[nx][ny] && book[nx][ny] == plaintext[index]) {
-                visited[nx][ny] = true;
-                path.add(new int[]{nx, ny});
-                if (dfs(index + 1, nx, ny, visited, path)) {
-                    return true;
-                }
-                path.remove(path.size() - 1);
-                visited[nx][ny] = false;
+        for (int[] d : DIRS) {
+            int nx = x + d[0];
+            int ny = y + d[1];
+
+            if (nx < 0 || nx >= M || ny < 0 || ny >= M) continue;
+            if (visited[nx][ny]) continue;
+            if (book[nx][ny] != data[index]) continue;
+
+            visited[nx][ny] = true;
+            path.add(new int[]{nx, ny});
+
+            if (dfs(index + 1, nx, ny, path)) {
+                return true; // 第一个成功的一定是字典序最小
             }
+
+            path.remove(path.size() - 1);
+            visited[nx][ny] = false;
         }
+
         return false;
     }
 
-    static void outputResult(List<int[]> path) {
+    static void print(List<int[]> path) {
         StringBuilder sb = new StringBuilder();
         for (int[] p : path) {
             sb.append(p[0]).append(" ").append(p[1]).append(" ");

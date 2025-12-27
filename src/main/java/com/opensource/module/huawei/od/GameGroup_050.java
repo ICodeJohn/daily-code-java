@@ -2,7 +2,7 @@ package com.opensource.module.huawei.od;
 
 import java.util.Scanner;
 
-public class GameGroup {
+public class GameGroup_050 {
 
     static long total;
     static long minDiff;
